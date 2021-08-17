@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using NerdStore.Core.Messages;
 
 namespace NerdStore.Core.DomainObjects
@@ -10,6 +9,7 @@ namespace NerdStore.Core.DomainObjects
         public Guid Id { get; set; }
 
         private List<Event> _notificacoes;
+
         public IReadOnlyCollection<Event> Notificacoes => _notificacoes?.AsReadOnly();
 
         protected Entity()
