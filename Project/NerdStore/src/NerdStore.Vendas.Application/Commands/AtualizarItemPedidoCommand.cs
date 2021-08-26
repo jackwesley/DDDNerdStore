@@ -7,14 +7,12 @@ namespace NerdStore.Vendas.Application.Commands
     public class AtualizarItemPedidoCommand : Command
     {
         public Guid ClientId { get; private set; }
-        public Guid PedidoId { get; private set; }
         public Guid ProdutoId { get; private set; }
         public int Quantidade { get; private set; }
 
-        public AtualizarItemPedidoCommand(Guid clientId, Guid pedidoId, Guid produtoId, int quantidade)
+        public AtualizarItemPedidoCommand(Guid clientId, Guid produtoId, int quantidade)
         {
             ClientId = clientId;
-            PedidoId = pedidoId;
             ProdutoId = produtoId;
             Quantidade = quantidade;
         }
@@ -39,10 +37,6 @@ namespace NerdStore.Vendas.Application.Commands
             RuleFor(c => c.ProdutoId)
                 .NotEqual(Guid.Empty)
                 .WithMessage("Id do cliente inválido");
-
-            RuleFor(c => c.PedidoId)
-               .NotEqual(Guid.Empty)
-               .WithMessage("Id do pedido inválido");
 
             RuleFor(c => c.Quantidade)
                 .GreaterThan(0)
